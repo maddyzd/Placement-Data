@@ -1,1 +1,2 @@
-## VA Midterm
+## VA Midterm Madeline Dumont, Sam Hecht, Maya Kennedy
+This Visual Analytics system enables dynamic exploration and analysis of student placement data using interactive bar charts, trendlines, and filtering options. Our goal was to build a tool to visualize relationships between various student attributes (e.g., CGPA, internships, aptitude scores) and their placement outcomes, uncovering key insights to aid understanding of hiring patterns.
