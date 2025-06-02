@@ -1,0 +1,176 @@
+
+body {
+	font-family: 'Trebuchet MS';
+	font-size: 9pt;
+}
+
+text {
+	font-family: 'Trebuchet MS';
+	font-size: 10pt;
+}
+input {
+	vertical-align: middle;
+}
+.noUi-tooltip {
+	display: block;
+  color: teal;
+  background-color: white;
+}
+
+input[type="checkbox"] {
+  accent-color: teal;
+  transform: scale(1.3);
+  margin: 9px; 
+}
+
+.noUi-connect {
+  background: teal;
+}
+
+.container
+{
+	text-align:center;
+	padding-left: 20px;
+}
+.sliderHumidity
+{
+  text-align:center;
+}
+
+#tooltip {
+  background: rgba(255, 255, 255, 0.92);
+  position: absolute;
+  height: auto;
+  visibility: hidden;
+  z-index: 9999;
+  padding: 5px;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.axis {
+  font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.discrete-filter {
+  display: block;
+  margin-right: 10px;
+  padding-left: 0px;
+}
+
+.continuous-filter {
+  display: inline-block;
+  margin-right: 20px;
+  padding-left: 0%;
+  width: 140px;
+  margin-top: 40px;
+}
+
+.slider {
+  width: 120pt;
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-start; 
+}
+
+.filters-section {
+  width: 200px;
+  display: inline-block;
+  margin-left: 0px;
+}
+
+#dropdown-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: flex-start; 
+  align-items: center;
+  margin-left: 100px;
+}
+
+#legend-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background-color: white;
+  margin-left: 20px;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+/* Style for the facet dropdown */
+#facet-dropdown-container {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#facet-select {
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* Style for the legend */
+#legend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-item rect {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.discrete-filter-header {
+  display: inline-block;
+  width: 180px;
+}
+
+#title-div {
+  height: 125px;
+  margin-left: 100px;
+}
+
+#chart-title {
+  width: 525px;
+}
+
+.tooltip {
+  position: absolute;
+  background: white;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}

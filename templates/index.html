@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placement Data Analysis</title>
+    <link href="static/css/nouislider.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" media="screen" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="static/js/nouislider.min.js"></script>
+    <script src="static/js/script.js"></script>
+</head>
+<!-- tooltip for displaying data on hover -->
+<div id="tooltip">
+  <span id = "x-axis-tooltip"> </span><span id="xval"></span><br/>
+  <span id = "y-axis-tooltip"></span><span id="yval"></span><br>
+  <span>Count: </span><span id = "countval"></span><br>
+  <span id="facet-label" style="display: none;"></span>
+</div>
+<body>
+  <div class="container">
+    <!-- Chart Section -->
+    <div class="chart-section">
+      <div class="chart-section">
+        <!-- Title and Facet -->
+        <div id="title-div" style="display: flex; align-items: center;">
+            <h1 id="chart-title">Chart-Title</h1>
+        
+            <div id="legend-container" style="display: flex; flex-direction: column; align-items: flex-start;">
+              <!-- Facet Dropdown -->
+              <div id="facet-dropdown-container">
+                    <label for="facet-select">Facet:</label>
+                    <select id="facet-select" name="fac" onchange="update()">
+                        {% for option in facet_options %}
+                            <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- Facet legend -->
+                <div id="legend"></div>
+            </div>
+        </div>
+
+        <svg id="bar" width="900" height="620">
+            <!-- X-Axis Label -->
+            <text id="x-axis-label" x="450" y="605" text-anchor="middle" style="font-size: 14px;">X-Axis</text>
+
+            <!-- Y-Axis Label -->
+            <text id="y-axis-label" transform="rotate(-90)" x="-320" y="10" text-anchor="middle" style="font-size: 14px;">Y-Axis</text>
+        </svg>
+    </div>
+
+      <br><br>
+      <!-- dropdowns - x-axis, y-axis, aggfunc -->
+      <div id="dropdown-container">
+        <label for="x-axis-select">X-axis:</label>
+        <select id="x-axis-select" name="grouper" onchange="update()">
+          {% for option in axis_options["x_axis"] %}
+            <option id="{{ option }}" value="{{ option }}">{{ option }}</option>
+          {% endfor %}
+        </select>
+        <br>
+    
+        <label for="y-axis-select">Y-axis:</label>
+        <select id="y-axis-select" name="value" onchange="update()">
+          {% for option in axis_options["y_axis"] %}
+            <option id="y-axis-option-{{ option }}" value="{{ option }}">{{ option }}</option>
+          {% endfor %}
+        </select>
+        <br>
+    
+        <label for="agg-func-select">Aggregate Function:</label>
+        <select id="agg-func-select" name="agg" onchange="update()">
+          {% for agg in agg_options %}
+            <option value="{{ agg }}">{{ agg }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div style="text-align: left; margin-top:100px">
+      <!-- Discrete Filters -->
+      {% for discrete_filter in discrete_filters %}
+        <div id="{{discrete_filter}}-filter" class="discrete-filter" style="margin-top: 0px; margin-bottom: 0px">
+          <h3 class="discrete-filter-header">{{discrete_filter}}: </h3>
+          {% for option in discrete_filter_options[discrete_filter] %}
+            <input type="checkbox" class="checkbox checkbox{{discrete_filter}} option-selected" value="{{option}}" onchange="update_checked(this)" checked >
+            <label>{{option}}</label>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <!-- Continuous Filters -->
+      <div>
+        {% for continuous_filter, (min, max) in continuous_filter_options.items() %}
+          <h3 class="continuous-filter">{{continuous_filter}}:</h3>
+          <div id="{{continuous_filter}}-slider" class="slider"></div>
+          <script>draw_slider("{{continuous_filter}}", {{min}}, {{max}})</script>
+          <br>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
